@@ -33,6 +33,8 @@ A website to create and participate in different kinds of sport events.
 
 ## Graphic charter
 
+## Database schema
+
 ## Built with
 
 **Backend :** 
