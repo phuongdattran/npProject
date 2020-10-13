@@ -17,6 +17,12 @@ Durant le mois à venir vous aurez l'occasion de réaliser un projet réaliste d
 
 ### Technos
 
-**Backend :** NodeJs 
+**Backend :** 
+- Node.js
+- Express
 
-**Frontend :** Materialize
+**Frontend :** 
+- HTML5
+- CSS3
+- Javascript
+- Materialize
