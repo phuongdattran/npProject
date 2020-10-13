@@ -7,9 +7,10 @@
     }
 }
 
-@media only screen and (min-width:600px) {
+@media only screen and (min-width:601px) {
     .nav-extended {
         top: 0;
+        padding: 0px 15px 0px 15px;
     }
     main {
         margin-top: 70px;
@@ -26,6 +27,15 @@
     padding: 15px;
 }
 
+#titleBar a {
+    color: white;
+}
+
+#socialIcon {
+    display: inline-block;
+    padding-right: 50px;
+}
+
 body {
     display: flex;
     min-height: 100vh;
@@ -33,5 +43,19 @@ body {
 }
 
 main {
-flex: 1 0 auto;
+    flex: 1 0 auto;
+    flex-direction: column;
 }
+
+#titleMain {
+    justify-content: center;
+}
+
+#title {
+    font-weight: 700;
+}
+
+.btn {
+    margin: 10px;
+}
+
