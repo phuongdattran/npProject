@@ -1,9 +1,9 @@
 # npProject
 
-- Type de challenge:  `Consolidation`
-- Durée: `4 semaines`
+- Challenge type:  `Consolidation`
+- Duration: `4 weeks`
 - Deadline: `16/11/20 9 A.M.`
-- Déploiement :
+- Deployment :
 	- Heroku
 	- MongoDB Atlas
 
@@ -21,9 +21,9 @@ A website to create and participate in different kinds of sport events.
 - Members system: follow different member and loot at their stats
 
 **Permissions**
-- Admin is able to edit or delete every event, comment and member info.
-- Member is only able to edit or delete his own events, comments and info.
-- Guest can only see the event list and can't look at the members list or the comments.
+- Admin is able to edit or delete every event, comment and member info
+- Member is only able to edit or delete his own events, comments and info
+- Guest can only see the event list and can't look at the members list or the comments
 
 **API**
 - Strava API to retrieve member stats for his profile
