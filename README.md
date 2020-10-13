@@ -9,13 +9,31 @@
 
 - Team challenge :  `solo`
 
-## Objectifs
-Durant le mois à venir vous aurez l'occasion de réaliser un projet réaliste dans des conditions réalistes. Cela va vous permettre de roder vos nouvelles connaissances en nodeJs et en PHP orienté objet. Ce site sera votre carte de visite, le fer de lance de votre site CV !
+## Objectif
+Put into practice everything I learned at BeCode after 4 months and especially Node.js.
 
-## Contraintes techniques
+## Project
+A website to create and participate in different kinds of sport events.
 
+**Features**
+- Session system: sign up, sign in, sign out, lost password, different permissions
+- Event system: CRUD, possibility to take part, write comments and sort the event list
+- Members system: follow different member and loot at their stats
 
-### Technos
+**Permissions**
+- Admin is able to edit or delete every event, comment and member info.
+- Member is only able to edit or delete his own events, comments and info.
+- Guest can only see the event list and can't look at the members list or the comments.
+
+**API**
+- Strava API to retrieve member stats for his profile
+- Weather API to display the weather for each event
+
+## Mock up
+
+## Graphic charter
+
+## Built with
 
 **Backend :** 
 - Node.js
