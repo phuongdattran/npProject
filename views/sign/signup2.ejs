@@ -1,0 +1,27 @@
+<%- include('../component/head'); %>
+<div class="blue-grey darken-3 white-text" id="titleBar">
+    <a href="/">npProject</a>
+</div>
+<main class="valign-wrapper" id="titleMain">
+    <div class="container">
+    <div class="row">
+        <div class="col s12 m6 offset-m3 l4 offset-l4">
+            <form action="/signup3/" method="POST">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="validate" required>
+                <label for="password">Password</label>
+                <input type="password" name="password" class="validate" required>
+                <label for="confirmPassword">Confirm password</label>
+                <input type="password" name="confirmPassword" class="validate" required>
+            
+        </div>
+    </div>
+</div>
+    <div class="row">
+        <div class="col s12">
+                <button class="waves-effect waves-light btn blue-grey darken-3">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+<%- include('../component/footer'); %>

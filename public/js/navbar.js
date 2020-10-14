@@ -5,3 +5,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 var el = document.querySelector('.tabs');
 var instance = M.Tabs.init(el, {});
+instance.updateTabIndicator();

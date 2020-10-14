@@ -1,4 +1,4 @@
-<%- include('component/head'); %>
+<%- include('../component/head'); %>
 <div class="blue-grey darken-3 white-text" id="titleBar">
     <a href="/">npProject</a>
 </div>
@@ -6,7 +6,7 @@
     <div class="container">
     <div class="row">
         <div class="col s12 m6 offset-m3 l4 offset-l4">
-            <form action="" method="POST">
+            <form action="/signup2/" method="POST">
                 <label for="firstname">Firstname</label>
                 <input type="text" name="firstname" class="validate" required>
                 <label for="lastname">Lastname</label>
@@ -19,14 +19,15 @@
                     <option value="cycling">Cycling</option>
                     <option value="running">Running</option>
                 </select>
-            </form>
+            
         </div>
     </div>
 </div>
     <div class="row">
         <div class="col s12">
-            <a href="/signup2/" class="waves-effect waves-light btn blue-grey darken-3">Next</a>
+            <button class="waves-effect waves-light btn blue-grey darken-3">Next</button>
+            </form>
         </div>
     </div>
 <script src="/js/sign.js" crossorigin="anonymous"></script>
-<%- include('component/footer'); %>
+<%- include('../component/footer'); %>
