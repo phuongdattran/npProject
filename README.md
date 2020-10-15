@@ -30,10 +30,15 @@ A website to create and participate in different kinds of sport events.
 - Weather API to display the weather for each event
 
 ## Mock up
+![mockup](https://user-images.githubusercontent.com/66431442/96180709-21380400-0f33-11eb-8c01-a3f91ec22ab0.jpg)
 
 ## Graphic charter
+![Capture](https://user-images.githubusercontent.com/66431442/96180720-2301c780-0f33-11eb-86dc-aa02cb000f84.JPG)
 
 ## Database schema
+User collection schema
+
+![Capture](https://user-images.githubusercontent.com/66431442/96180885-6ceaad80-0f33-11eb-9d91-b6690fb66c07.JPG)
 
 ## Built with
 
