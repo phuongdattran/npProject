@@ -4,14 +4,20 @@ const router = express.Router();
 
 const homeCtrl = require("../../controller/frontend/home");
 const userCtrl = require("../../controller/frontend/user");
+const eventCtrl = require("../../controller/frontend/event");
+const membersCtrl = require("../../controller/frontend/members");
 
 router.get("/", homeCtrl.indexPage);
-router.get("/home/", homeCtrl.homePage);
+router.get("/home", homeCtrl.homePage);
+
+router.get("/event", eventCtrl.eventPage);
 
 router.get("/signup", userCtrl.signupPage1);
 router.post("/signup2", userCtrl.signupPage2);
-router.post("/signup3", userCtrl.signupPage3);
+router.get("/signup3", userCtrl.signupPage3);
 router.get("/signin", userCtrl.signinPage);
+
+router.get("/members", membersCtrl.membersPage)
 
 router.get("/myprofile", userCtrl.myProfilePage)
 

@@ -4,6 +4,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const methodOverride = require("method-override");
 
+const backendRoutes = require("./route/backend/router");
 const frontendRoutes = require("./route/frontend/router");
 
 mongoose
@@ -37,6 +38,8 @@ app.use(cookieParser());
 
 app.use(methodOverride("_method"));
 
+
+app.use("/api/", backendRoutes);
 
 app.use("/", frontendRoutes);
 
