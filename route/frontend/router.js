@@ -10,12 +10,13 @@ const membersCtrl = require("../../controller/frontend/members");
 router.get("/", homeCtrl.indexPage);
 router.get("/home", homeCtrl.homePage);
 
-router.get("/event", eventCtrl.eventPage);
+router.get("/events", eventCtrl.eventPage);
 
 router.get("/signup", userCtrl.signupPage1);
 router.post("/signup2", userCtrl.signupPage2);
 router.get("/signup3", userCtrl.signupPage3);
 router.get("/signin", userCtrl.signinPage);
+router.get("/signout", userCtrl.signOut);
 
 router.get("/members", membersCtrl.membersPage)
 

@@ -2,6 +2,7 @@ const express = require('express');
 const User = require('../../model/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const joi = require('joi');
 
 exports.getAllUser = (req, res, next) => {
     User.find()
@@ -15,7 +16,31 @@ exports.getOneUser = (req, res, next) => {
     .catch(error => res.status(404).json({error}));
 };
 
+exports.getLastUser = (req, res, next) => {
+    User.find().sort({ _id: -1 }).limit(1)
+    .then(user => res.status(200).json(user))
+    .catch(error => res.status(404).json({error}));
+};
+
 exports.createUser = async (req, res, next) => {
+
+    const schema = joi.object().keys({
+        firstname: joi.string().trim().required(),
+        lastname: joi.string().trim().required(),
+        birthdate: joi.string().trim().required(),
+        mainSport: joi.string().trim().required(),
+        email: joi.string().trim().email().required(),
+        password: joi.string().pattern(new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')).required(), //1 upper, 1 lower, 1 number, 1 special char, 8 min length
+        confirmPassword: joi.string().pattern(new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')).required(),
+        status: joi.any().valid('member')
+    });
+
+    const result = schema.validate(req.body);
+    if (result.error) {
+        res.status(400).send(result.error.details[0].message);
+        return;
+    }
+
     bcrypt.hash(req.body.password, 10)
     .then(hash => {
             const user = new User({
@@ -58,7 +83,7 @@ exports.deleteUser = (req, res, next) => {
     .catch(error => res.status(400).json({error}));
 };
 
-exports.login = (req, res, next) => {
+exports.signin = (req, res, next) => {
     User.findOne({email: req.body.email})
     .then (user => {
         if(!user) {

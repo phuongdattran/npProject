@@ -4,16 +4,17 @@ const router = express.Router();
 
 const userCtrl = require("../../controller/backend/user");
 
-router.get('/', userCtrl.getAllUser);
+router.get('/user', userCtrl.getAllUser);
 
-router.get('/:id', userCtrl.getOneUser);
+router.get('/user/:id', userCtrl.getOneUser);
 
-router.post('/signup', userCtrl.createUser);
+router.get('/user/last/user', userCtrl.getLastUser);
 
-router.put('/:id', userCtrl.updateUser);
+router.put('/user/:id', userCtrl.updateUser);
 
-router.delete('/:id', userCtrl.deleteUser);
+router.delete('/user/:id', userCtrl.deleteUser);
 
-router.post('/signin', userCtrl.login);
+router.post('/user/signup', userCtrl.createUser);
+router.post('/user/signin', userCtrl.signin);
 
 module.exports = router;
