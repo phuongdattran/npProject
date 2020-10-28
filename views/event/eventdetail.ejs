@@ -1,0 +1,26 @@
+<%- include('../component/head'); %> 
+<%- include('../component/navbar'); %>
+<%- include('../component/pagetitle'); %>
+
+<p>Title: <%= eventDetail.title %></p>
+<p>Place: <%= eventDetail.meeting.place %></p>
+<p>Date: <%= eventDetail.meeting.date %> at <%= eventDetail.meeting.time %></p>
+<p>Type: <%= eventDetail.type %></p>
+<p>Sport: <%= eventDetail.sport %></p>
+<p>Pace: <%= eventDetail.pace %></p>
+<p>Author: <%= eventDetail.author %></p>
+
+<div id="map"></div>
+<p>Total distance: <span id="totalDistance"></span> km</p>
+<p>GPX: <a id="gpxDownload"></a></p>
+
+<script>let trackPath = `http://localhost:3000/gpx/<%= eventDetail.gps.filename %>`;</script>
+<script src="/js/eventDetail.js"></script>
+<script src="/js/gpx-parser.js"></script>
+
+<%- include('../component/footer'); %>
+
+
+
+
+

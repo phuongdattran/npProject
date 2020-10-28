@@ -6,11 +6,14 @@ const homeCtrl = require("../../controller/frontend/home");
 const userCtrl = require("../../controller/frontend/user");
 const eventCtrl = require("../../controller/frontend/event");
 const membersCtrl = require("../../controller/frontend/members");
+const myProfileCtrl = require("../../controller/frontend/myprofile");
 
 router.get("/", homeCtrl.indexPage);
 router.get("/home", homeCtrl.homePage);
 
 router.get("/events", eventCtrl.eventPage);
+router.get("/newevent", eventCtrl.newEventPage);
+router.get("/event/:id", eventCtrl.eventDetailPage);
 
 router.get("/signup", userCtrl.signupPage1);
 router.post("/signup2", userCtrl.signupPage2);
@@ -18,8 +21,10 @@ router.get("/signup3", userCtrl.signupPage3);
 router.get("/signin", userCtrl.signinPage);
 router.get("/signout", userCtrl.signOut);
 
-router.get("/members", membersCtrl.membersPage)
+router.get("/members", membersCtrl.membersPage);
 
-router.get("/myprofile", userCtrl.myProfilePage)
+router.get("/myprofile", myProfileCtrl.myProfilePage);
+router.get("/dcstrava", myProfileCtrl.dcStrava);
+router.get("/editmyinfo", myProfileCtrl.editMyInfoPage);
 
 module.exports = router;

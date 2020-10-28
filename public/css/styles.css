@@ -3,7 +3,25 @@
         bottom: 0;
     }
     main {
-        margin-bottom: 70px;
+        margin: 55px 0px 56px 0px;
+    }
+    .col, .row {
+        padding: 0px !important;
+    }
+    .card {
+        width: 100%;
+    }
+    .toast {
+        width: max-content;
+        margin: 20px;
+    }
+    #toast-container {
+        left: 42%;
+        bottom: 50px;
+    }
+    #map {
+        height: 200px;
+        width: 100%;
     }
 }
 
@@ -11,21 +29,31 @@
     .nav-extended {
         top: 0;
         padding: 0px 15px 0px 15px;
+        box-shadow: none;
     }
     main {
-        margin-top: 70px;
+        margin-top: 10px;
         padding-top: 50px;
         }
+    #map {
+        height: 300px;
+        width: 50%;
+    }
 }
 
 .nav-extended {
     position: fixed;
+    z-index: 1000;
 }
 
 #titleBar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1001;
     font-weight: 500;
     font-size: 17px;
-    padding: 15px;
+    padding: 15px 15px 15px 25px;
 }
 
 #titleBar a {
@@ -43,9 +71,23 @@ body {
     flex-direction: column;
 }
 
+a {
+    color: #37474f;
+}
+
+a:hover {
+    color: #78909c;
+}
+
 main {
     flex: 1 0 auto;
     flex-direction: column;
+}
+
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
 }
 
 #titleMain {
@@ -69,7 +111,7 @@ main {
 }
 
 .card {
-   max-width: 400px;
+    max-width: 415px;
 }
 
 .card-title {
@@ -77,16 +119,16 @@ main {
 }
 
 .eventDate {
-        color: #37474f;
-        font-size: 21px;
-        font-weight: 700;
-        background-color: white ;
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        padding: 2px 10px 5px 10px;
-        border-radius: 3px 3px 3px 3px;
-        box-shadow: -5px 5px #37474f;
+    color: #37474f;
+    font-size: 21px;
+    font-weight: 700;
+    background-color: white ;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 2px 10px 5px 10px;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: -5px 5px #37474f;
 }
 
 .eventMonth {
@@ -106,4 +148,58 @@ main {
     font-size: 20px;
     font-weight: 650;
     padding: 10px;
+}
+
+.title {
+    font-weight: 600;
+}
+
+.tabs {
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.bottomNavbar {
+    box-shadow: 0px -1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.homeTabs a {
+    color: #c3c8cb !important;
+}
+
+.homeTabs .active {
+    color: white !important;
+}
+
+.indicator {
+    background-color: white !important;
+}
+
+#tabs-swipe-demo {
+    position: fixed;
+    top: 55px;
+    z-index:300;
+    transition: top 0.4s ease-out;
+}
+
+#popularEvent, #nearbyEvent {
+    padding-top: 55px !important;
+}
+
+#addBtn {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+}
+
+#addBtn:hover {
+    transform: scale(0.98);
+}
+
+#filters {
+    display: flex;
+    justify-content: space-between;
+}
+
+.addTopMargin {
+    margin-top: 20px;
 }

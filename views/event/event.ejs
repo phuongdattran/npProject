@@ -1,25 +1,32 @@
-<%- include('../component/head'); %> <%- include('../component/navbar'); %>
-<div class="hide-on-med-and-up blue-grey darken-3 white-text" id="titleBar">
-  <a href=""><i class="material-icons left">chevron_left</i>Events</a>
+<%- include('../component/head'); %> 
+<%- include('../component/navbar'); %>
+<%- include('../component/pagetitle'); %>
+<div id="filters">
+  <a class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons">pedal_bike</i></a>
+  <a class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons">directions_run</i></a>
+  <a class="waves-effect waves-light btn blue-grey darken-3">Filter</a>
 </div>
+<% for(let i=0; i< events.length; i++) { %>
 <div class="row">
   <div class="col s12 m6 l4 offset-m3 offset-l4">
-    <a href="#">
+    <a href="http://localhost:3000/event/<%= events[i]._id %>">
       <div class="card">
         <div class="card-image">
           <img src="/img/cycling_event.jpg" />
           <!--<span class="card-title">Event Title</span>-->
           <div class="eventDate">
-            <div>12</div>
-            <div class="eventMonth">Oct</div>
+            <div><%= events[i].meeting.date.split(" ")[0] %></div>
+            <div class="eventMonth"><%= events[i].meeting.date.split(" ")[1] %></div>
           </div>
         </div>
         <div class="cardTitle center-align">
-          Event Title
+          <%= events[i].title %>
         </div>
       </div>
     </a>
   </div>
 </div>
+<% } %>
+<a href="/newevent" class="btn-floating btn-large waves-effect waves-light blue-grey darken-3" id="addBtn"><i class="material-icons">add</i></a>
 
 <%- include('../component/footer'); %>

@@ -62,7 +62,7 @@ exports.updateUser = (req, res, next) => {
             console.log(hash);
             User.updateOne({_id: req.params.id}, {...req.body, _id: req.params.id, password: hash})
             .then(() => {
-                res.status(200).redirect('/myaccount/userinfo/');
+                res.status(200).redirect('/myprofile');
             })
             .catch(error => res.status(400).json({ error }));
             }
@@ -72,7 +72,7 @@ exports.updateUser = (req, res, next) => {
 
     User.updateOne({_id: req.params.id}, {...req.body, _id: req.params.id})
     .then(() => {
-        res.status(200).redirect('/myaccount/userinfo/');
+        res.status(200).redirect('/myprofile');
     })
     .catch(error => res.status(400).json({ error }));
 };
@@ -100,7 +100,7 @@ exports.signin = (req, res, next) => {
                 {expiresIn: '24h'}
                 );
             res.cookie('token', token);
-            res.status(200).redirect('/home');
+            res.status(200).redirect('/home/');
         })
         .catch(error => res.status(500).json({error}));
     })

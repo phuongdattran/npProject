@@ -17,25 +17,25 @@
       </li>
     </ul>
   </div>
-  <div class="nav-content hide-on-large-only">
+  <div class="nav-content hide-on-large-only bottomNavbar">
     <ul class="tabs tabs-transparent">
       <li class="tab">
-        <a href="/home/" target="_self"><i class="material-icons">home</i>Home</a>
+        <a class="<%  if(page=="Home") {%><%= "active"%><%} %>" href="/home" target="_self"><i class="material-icons">home</i>Home</a>
       </li>
       <li class="tab">
-        <a class="active" href="/events/" target="_self"><i class="material-icons">event</i></a>
+        <a class="<%  if(page=="Events") {%><%= "active"%><%} %>" href="/events" target="_self"><i class="material-icons">event</i></a>
       </li>
       <li class="tab">
-        <a href="/members/" target="_self"><i class="material-icons">group_add</i></a>
+        <a class="<%  if(page=="Members") {%><%= "active"%><%} %>" href="/members" target="_self"><i class="material-icons">group_add</i></a>
       </li>
       <li class="tab">
-        <a href="/myprofile/" target="_self"><i class="material-icons">person</i></a>
+        <a class="<%  if(page=="My Profile") {%><%= "active"%><%} %>" href="/myprofile" target="_self"><i class="material-icons">person</i></a>
       </li>
     </ul>
   </div>
-  <ul class="sidenav" id="mobile-demo">
+  <!--<ul class="sidenav" id="mobile-demo">
     <li><a href="">About Us</a></li>
     <li><a href="">Contact</a></li>
-  </ul>
+  </ul>-->
 </nav>
 <main>

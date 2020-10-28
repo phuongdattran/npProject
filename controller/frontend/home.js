@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 exports.homePage = (req, res, next) => {
-    res.render('home.ejs')
+    res.render('home.ejs', {page: "Home", arrow:"hidden"})
     };
 
 exports.indexPage = async (req, res, next) => {

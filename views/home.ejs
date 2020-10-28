@@ -1,9 +1,70 @@
-<%- include('component/head'); %> <%- include('component/navbar'); %>
-<div class="hide-on-med-and-up blue-grey darken-3 white-text" id="titleBar">
-  <a href=""><i class="material-icons left">chevron_left</i>Home</a>
+<%- include('component/head'); %> 
+<%- include('component/navbar'); %>
+<%- include('component/pagetitle'); %>
+
+<ul id="tabs-swipe-demo" class="tabs blue-grey darken-3 toptabs">
+  <li class="tab col s3 homeTabs"><a class="active" href="#popularEvent">Popular</a></li>
+  <li class="tab col s3 homeTabs"><a href="#nearbyEvent">Nearby</a></li>
+</ul>
+<div id="popularEvent" class="col s12">
+
+   
+      <a href="#">
+        <div class="card">
+          <div class="card-image">
+            <img src="/img/cycling_event.jpg" />
+            <!--<span class="card-title">Event Title</span>-->
+            <div class="eventDate">
+              <div>12</div>
+              <div class="eventMonth">Oct</div>
+            </div>
+          </div>
+          <div class="cardTitle center-align">
+            Event Title
+          </div>
+        </div>
+      </a>
+
+
+      <a href="#">
+        <div class="card">
+          <div class="card-image">
+            <img src="/img/cycling_event.jpg" />
+            <!--<span class="card-title">Event Title</span>-->
+            <div class="eventDate">
+              <div>12</div>
+              <div class="eventMonth">Oct</div>
+            </div>
+          </div>
+          <div class="cardTitle center-align">
+            Event Title
+          </div>
+        </div>
+      </a>
+  
+
+  
+      <a href="#">
+        <div class="card">
+          <div class="card-image">
+            <img src="/img/cycling_event.jpg" />
+            <!--<span class="card-title">Event Title</span>-->
+            <div class="eventDate">
+              <div>12</div>
+              <div class="eventMonth">Oct</div>
+            </div>
+          </div>
+          <div class="cardTitle center-align">
+            Event Title
+          </div>
+        </div>
+      </a>
+   
+
 </div>
-<h4 class="sectionTitle">Popular Events</h4>
-<div class="row">
+
+<div id="nearbyEvent" class="col s12">
+
   <div class="col s12 m6 l4 offset-m3 offset-l4">
     <a href="#">
       <div class="card">
@@ -21,6 +82,9 @@
       </div>
     </a>
   </div>
+
 </div>
 
+
+<script src="/js/tabs.js"></script>
 <%- include('component/footer'); %>

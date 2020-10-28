@@ -15,7 +15,7 @@ exports.signupPage3 = async (req, res, next) => {
         const token = req.cookies['token'];
         let url = `http://localhost:3000/api/user/last/user`;
 
-        myInit = {
+        let myInit = {
             headers: {
                 'Authorization': 'Bearer ' + token
             }
@@ -36,8 +36,4 @@ exports.signinPage = (req, res, next) => {
 
 exports.signOut = (req, res, next) => {
     res.clearCookie('token').redirect('/home/');
-};
-
-exports.myProfilePage = (req, res, next) => {
-    res.render('myprofile/myprofile.ejs');
 };
