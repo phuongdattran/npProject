@@ -5,5 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         M.toast({html: 'Strava disconnected'});
     } else if (url.startsWith('http://localhost:3000/myprofile/?state=&code=')) {
         M.toast({html: 'Strava connected'});
+    } else if (url.startsWith('http://localhost:3000/events?delete')) {
+        M.toast({html: 'Event deleted'});
     }
 });

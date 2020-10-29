@@ -16,7 +16,6 @@
         margin: 20px;
     }
     #toast-container {
-        left: 42%;
         bottom: 50px;
     }
     #map {
@@ -202,4 +201,9 @@ footer {
 
 .addTopMargin {
     margin-top: 20px;
+}
+
+.eventDetailBtn {
+    display: flex;
+    justify-content: space-around;
 }

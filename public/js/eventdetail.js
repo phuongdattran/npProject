@@ -21,7 +21,7 @@ fetch(trackPath)
         gpx.parse(gpxData);
 
         document.getElementById("totalDistance").innerText = (gpx.tracks[0].distance.total / 1000).toFixed(2);
-        document.getElementById("gpxDownload").innerText = "Download";
+        document.getElementById("gpxDownload").innerHTML = "<i class='material-icons left'>get_app</i>GPX";
         document.getElementById("gpxDownload").setAttribute("href", trackPath);
 
         drawTrack(gpx.tracks[0]);

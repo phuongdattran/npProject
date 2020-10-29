@@ -2,25 +2,34 @@
 <%- include('../component/navbar'); %>
 <%- include('../component/pagetitle'); %>
 
-<p>Title: <%= eventDetail.title %></p>
+<% if(userStatus=="author" || userStatus=="admin") { %>
+    <div class="eventDetailBtn">
+        <a class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons left">edit</i>Edit</a>
+        <form action="http://localhost:3000/api/event/<%= eventDetail._id %>?_method=DELETE" method="POST">
+            <button class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons left">delete</i>Delete</button>
+        </form>
+    </div>
+<% } %>
+
+<h5><%= eventDetail.title %></h5>
+<% if (eventDetail.sport == "cycling") { %>
+    <i class="material-icons">pedal_bike</i>
+<% } else if (eventDetail.sport == "running") { %>
+    <i class="material-icons">directions_run</i>
+<% } %>
 <p>Place: <%= eventDetail.meeting.place %></p>
 <p>Date: <%= eventDetail.meeting.date %> at <%= eventDetail.meeting.time %></p>
 <p>Type: <%= eventDetail.type %></p>
-<p>Sport: <%= eventDetail.sport %></p>
 <p>Pace: <%= eventDetail.pace %></p>
+<p>Description: <%= eventDetail.description %></p>
 <p>Author: <%= eventDetail.author %></p>
 
 <div id="map"></div>
-<p>Total distance: <span id="totalDistance"></span> km</p>
-<p>GPX: <a id="gpxDownload"></a></p>
+<p>Distance: <span id="totalDistance"></span> km</p>
+<a class="waves-effect waves-light btn blue-grey darken-3" id="gpxDownload"></a>
 
 <script>let trackPath = `http://localhost:3000/gpx/<%= eventDetail.gps.filename %>`;</script>
 <script src="/js/eventDetail.js"></script>
 <script src="/js/gpx-parser.js"></script>
 
 <%- include('../component/footer'); %>
-
-
-
-
-

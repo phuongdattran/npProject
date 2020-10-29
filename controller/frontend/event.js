@@ -61,14 +61,19 @@ exports.eventDetailPage = async (req, res, next) => {
     let gpx = JSON.parse(eventDetail.gps);
     eventDetail.gps = gpx;
 
-    let urlUser = `http://localhost:3000/api/user/${userId}`;
+    let urlUser = `http://localhost:3000/api/user/${eventDetail.author}`;
     let userInfo = await fetch(urlUser, myInit);
     userInfo = await userInfo.json();
 
     let author = `${userInfo.firstname} ${userInfo.lastname}`;
     eventDetail.author = author;
+
+    let userStatus = userInfo.status;
+    if (userInfo._id == userId) {
+      userStatus = "author";
+    }
   
-    res.render('event/eventdetail.ejs', {page: "Event Details", arrow:"", eventDetail});
+    res.render('event/eventdetail.ejs', {page: "Event Details", arrow:"", eventDetail, userStatus});
   } catch {
     res.status(401).render('noaccess.ejs', {page: "Event Details", arrow:""});
   }

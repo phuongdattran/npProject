@@ -1,6 +1,7 @@
 const express = require('express');
 const Event = require('../../model/event');
 const joi = require('joi');
+const fs = require('fs');
 
 exports.getAllEvent = (req, res, next) => {
 
@@ -60,7 +61,13 @@ exports.updateEvent = (req, res, next) => {
 };
 
 exports.deleteEvent = (req, res, next) => {
-    Event.deleteOne({_id: req.params.id})
-    .then(()=> res.status(200).json({message: 'Your event has been deleted'}))
-    .catch(error => res.status(400).json({error}));
+    Event.findOne({_id:req.params.id})
+    .then(event => {
+        fs.unlink(`./public/gpx/${JSON.parse(event.gps).filename}`, () => {
+            Event.deleteOne({_id: req.params.id})
+            .then(()=> res.status(200).redirect('/events?delete'))
+            .catch(error => res.status(400).json({error}));
+        });
+    })
+    .catch(error => res.status(404).json({error}));
 };
