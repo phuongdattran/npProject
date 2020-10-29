@@ -18,7 +18,7 @@ A website to create and participate in different kinds of sport events.
 **Features**
 - Session system: sign up, sign in, sign out, lost password, different permissions
 - Event system: CRUD, possibility to take part, write comments and sort the event list
-- Members system: follow different members and loot at their stats
+- Members system: follow different members and look at their stats
 
 **Permissions**
 - Admin is able to edit or delete every event, comment and member info
