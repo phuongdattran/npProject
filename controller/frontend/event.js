@@ -78,3 +78,54 @@ exports.eventDetailPage = async (req, res, next) => {
     res.status(401).render('noaccess.ejs', {page: "Event Details", arrow:""});
   }
 };
+
+exports.eventEditPage1 = async (req, res, next) => {
+  try {
+    const token = req.cookies["token"];
+    let url = `http://localhost:3000/api/event/${req.params.id}`;
+
+    myInit = {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    };
+
+    let eventDetail = await fetch(url, myInit);
+    eventDetail = await eventDetail.json();
+    
+    let gpx = JSON.parse(eventDetail.gps);
+    eventDetail.gps = gpx;
+
+      res.render('event/eventedit1.ejs', {page: "Edit Event", arrow:"", eventDetail});
+  } catch {
+      res.status(401).render('noaccess.ejs', {page: "Edit Event", arrow:""});
+  }
+};
+
+exports.eventEditPage2 = async (req, res, next) => {
+  try {
+    const token = req.cookies["token"];
+    let url = `http://localhost:3000/api/event/${req.params.id}`;
+
+    myInit = {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    };
+
+    let eventDetail = await fetch(url, myInit);
+    eventDetail = await eventDetail.json();
+    
+    let gpx = JSON.parse(eventDetail.gps);
+    eventDetail.gps = gpx;
+
+    eventDetail.title = req.body.title;
+    eventDetail.type = req.body.type;
+    eventDetail.description = req.body.description;
+    eventDetail.sport = req.body.sport;
+
+    res.render('event/eventedit2.ejs', {page: "Edit Event", arrow:"", eventDetail});
+  } catch {
+      res.status(401).render('noaccess.ejs', {page: "Edit Event", arrow:""});
+  }
+};

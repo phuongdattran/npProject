@@ -40,6 +40,10 @@
     }
 }
 
+:root {
+    --main-color: #37474f;
+}
+
 .nav-extended {
     position: fixed;
     z-index: 1000;
@@ -71,7 +75,7 @@ body {
 }
 
 a {
-    color: #37474f;
+    color: var(--main-color);
 }
 
 a:hover {
@@ -102,11 +106,31 @@ footer {
 }
 
 .datepicker-date-display{
-    background-color: #37474f;
+    background-color: var(--main-color);
 }
 
 .datepicker-calendar-container{
     background-color: #f5f5f5;
+}
+
+.datepicker-cancel, .datepicker-done, .is-today, .timepicker-close {
+    color: var(--main-color);
+}
+
+.timepicker-canvas line { 
+    stroke: var(--main-color); 
+}
+
+.timepicker-canvas-bearing, .timepicker-canvas-bg { 
+    fill: var(--main-color); 
+}
+
+.timepicker-tick:hover { 
+    background: var(--main-color); 
+}
+
+.timepicker-digital-display {
+    background-color: var(--main-color);
 }
 
 .card {
@@ -118,7 +142,7 @@ footer {
 }
 
 .eventDate {
-    color: #37474f;
+    color: var(--main-color);
     font-size: 21px;
     font-weight: 700;
     background-color: white ;
@@ -127,7 +151,7 @@ footer {
     right: 5px;
     padding: 2px 10px 5px 10px;
     border-radius: 3px 3px 3px 3px;
-    box-shadow: -5px 5px #37474f;
+    box-shadow: -5px 5px var(--main-color);
 }
 
 .eventMonth {
@@ -143,7 +167,7 @@ footer {
 }
 
 .cardTitle {
-    color: #37474f;
+    color: var(--main-color);
     font-size: 20px;
     font-weight: 650;
     padding: 10px;

@@ -25,7 +25,7 @@ router.post('/user/signin', userCtrl.signin);
 router.get('/event', eventCtrl.getAllEvent);
 router.post('/newevent', multer, eventCtrl.createEvent);
 router.get('/event/:id', eventCtrl.getOneEvent);
-router.put('/event/:id', eventCtrl.updateEvent);
+router.put('/event/:id', multer, eventCtrl.updateEvent);
 router.delete('/event/:id', eventCtrl.deleteEvent);
 
 module.exports = router;

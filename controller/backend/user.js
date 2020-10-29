@@ -98,7 +98,7 @@ exports.signin = (req, res, next) => {
                 {userId: user._id},
                 'RANDOM_TOKEN_SECRET',
                 {expiresIn: '24h'}
-                );
+            );
             res.cookie('token', token);
             res.status(200).redirect('/home/');
         })

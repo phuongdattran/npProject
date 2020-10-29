@@ -1,0 +1,47 @@
+<%- include('../component/head'); %>
+<%- include('../component/navbar'); %>
+<%- include('../component/pagetitle'); %>
+
+<main class="valign-wrapper" id="titleMain">
+    <div class="container">
+    <div class="row">
+        <div class="col s12 m6 offset-m3 l4 offset-l4">
+            <form action="http://localhost:3000/api/event/<%= eventDetail._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                <label for="pace">Distance</label>
+                <input type="text" name="distance" class="validate" value="<%= eventDetail.distance %>" required>
+                <label for="pace">Pace</label>
+                <input type="text" name="pace" class="validate" value="<%= eventDetail.pace %>" required>
+                <label for="date">Date</label>
+                <input type="text" name="meeting.date" class="datepicker validate eventDatePicker" value="<%= eventDetail.meeting.date %>" required>
+                <label for="date">Time</label>
+                <input type="text" name="meeting.time" class="timepicker validate" value="<%= eventDetail.meeting.time %>" required>
+                <label for="place">Place</label>
+                <input type="text" name="meeting.place" class="validate" value="<%= eventDetail.meeting.place %>" required>
+                
+                <div class="file-field input-field">
+                    <div class="btn blue-grey darken-3">
+                      <span>GPS</span>
+                      <input type="file" name="gps">
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" value="<%= eventDetail.gps.filename %>">
+                    </div>
+                </div>
+
+                <input type="hidden" name="oldGpx" value="<%= eventDetail.gps.filename %>">
+                <input type="hidden" name="title" class="validate" value="<%= eventDetail.title %>" required>
+                <input type="hidden" name="type" class="validate" value="<%= eventDetail.type %>" required>
+                <input type="hidden" name="description" class="validate" value="<%= eventDetail.description %>" required>
+                <input type="hidden" name="sport" class="validate" value="<%= eventDetail.sport %>" required>
+
+        </div>
+    </div>
+</div>
+    <div class="row">
+        <div class="col s12">
+            <button class="waves-effect waves-light btn blue-grey darken-3">Edit</button>
+            </form>
+        </div>
+    </div>
+<script src="/js/sign.js" crossorigin="anonymous"></script>
+<%- include('../component/footer'); %>

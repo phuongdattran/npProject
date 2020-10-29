@@ -27,6 +27,7 @@ exports.createEvent = async (req, res, next) => {
         title: joi.string().trim().required(),
         type: joi.string().trim().required(),
         sport: joi.string().trim().required(),
+        distance: joi.string().trim().required(),
         pace: joi.string().trim().required(),
         meeting: schemaMeeting, //not working
         description: joi.string().trim(),
@@ -51,11 +52,19 @@ exports.createEvent = async (req, res, next) => {
 };
 
 exports.updateEvent = (req, res, next) => {
+    let event = {...req.body}
+    if (req.file) {
+        fs.unlink(`./public/gpx/${req.body.oldGpx}`, () => {});
+        event =  {
+            ...req.body,
+            gps: JSON.stringify(req.file)
+        }
+    }
     Event.updateOne({_id: req.params.id}, {        
-        ...req.body, 
+        ...event, 
         _id: req.params.id})
     .then(() => {
-        res.status(200).redirect(`/events/${req.params.id}`);
+        res.status(200).redirect(`/event/${req.params.id}`);
     })
     .catch(error => res.status(400).json({ error }));
 };
