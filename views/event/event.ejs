@@ -1,18 +1,39 @@
 <%- include('../component/head'); %> 
 <%- include('../component/navbar'); %>
 <%- include('../component/pagetitle'); %>
+
 <div id="filters">
-  <a class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons">pedal_bike</i></a>
-  <a class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons">directions_run</i></a>
-  <a class="waves-effect waves-light btn blue-grey darken-3">Filter</a>
+  <a href="/events?sport=cycling" class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons">pedal_bike</i></a>
+  <a href="/events?sport=running" class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons">directions_run</i></a>
 </div>
+<ul class="collapsible">
+  <li>
+    <div class="collapsible-header" id="filterDiv">
+      <a class="waves-effect waves-light btn blue-grey darken-3">Sort By</a>
+    </div>
+    <div class="collapsible-body">
+      <div class="input-field col s12">
+        <form action="/events" id="sortBy" method="GET">
+          <select name="sort" onchange="this.form.submit()">
+            <option value="" disabled selected>Choose an option</option>
+            <option value="-_id">New</option>
+            <option value="date">Date</option>
+            <option value="title">A-Z</option>
+          </select>
+          <input type="hidden" name="sport" id="sport" value="">
+        </form>
+      </div>
+    </div>
+  </li>
+</ul>
+
 <% for(let i=0; i< events.length; i++) { %>
 <div class="row">
   <div class="col s12 m6 l4 offset-m3 offset-l4">
     <a href="http://localhost:3000/event/<%= events[i]._id %>">
       <div class="card">
         <div class="card-image">
-          <img src="/img/cycling_event.jpg" />
+          <img src="/img/<%= events[i].sport %>_event.jpg" />
           <!--<span class="card-title">Event Title</span>-->
           <div class="eventDate">
             <div><%= events[i].meeting.date.split(" ")[0] %></div>
@@ -27,7 +48,9 @@
   </div>
 </div>
 <% } %>
+
 <a href="/newevent" class="btn-floating btn-large waves-effect waves-light blue-grey darken-3" id="addBtn"><i class="material-icons">add</i></a>
 
 <script src="/js/toast.js"></script>
+<script src="/js/filter.js"></script>
 <%- include('../component/footer'); %>

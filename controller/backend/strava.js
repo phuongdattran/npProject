@@ -1,4 +1,3 @@
-const express = require('express');
 const Strava = require('../../model/strava');
 
 exports.getAllStrava = (req, res, next) => {

@@ -12,7 +12,7 @@ const eventSchema = mongoose.Schema({
       place: { type: String, default:"no place", required: true }
   },
   description: { type: String, default: "none", required: false },
-  author: { type: String, required: true },
+  author: { type: mongoose.Schema.Types.ObjectId, required: true },
   gps: { type: String, default: "none", required: false }
 });
 

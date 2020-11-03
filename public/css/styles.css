@@ -204,7 +204,7 @@ footer {
     transition: top 0.4s ease-out;
 }
 
-#popularEvent, #nearbyEvent {
+#popularEvent, #myEvents {
     padding-top: 55px !important;
 }
 
@@ -220,7 +220,12 @@ footer {
 
 #filters {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+
+#filterDiv {
+    padding: 0px;
+    border: 0px;
 }
 
 .addTopMargin {
@@ -230,4 +235,9 @@ footer {
 .eventDetailBtn {
     display: flex;
     justify-content: space-around;
+}
+
+.collapsible-body {
+    background-color: white;
+    padding: 5px 10px;
 }

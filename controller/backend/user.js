@@ -2,7 +2,7 @@ const express = require('express');
 const User = require('../../model/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const joi = require('joi');
+const joi = require('joi-oid');
 
 exports.getAllUser = (req, res, next) => {
     User.find()

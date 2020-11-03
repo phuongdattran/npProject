@@ -188,7 +188,6 @@ exports.dcStrava = async (req, res, next) => {
 
       await fetch(urlGetStravaConnectionData, myInitDcStravaDb);
 
-
       res.redirect('/myprofile?dcstrava');
     } catch {
       res.status(401).render('noaccess.ejs', {page: "My Profile", arrow:"hidden"});

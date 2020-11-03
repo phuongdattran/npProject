@@ -6,15 +6,25 @@
   <i class="large material-icons">child_care</i>
   <p><%= userInfo.firstname %> <%= userInfo.lastname %></p>
 </div>
-<% if(userInfoStrava.recent_ride_totals.count != 'none') { %>
-<div>Average Weekly Stats</div>
+<% if(userInfoStrava.recent_ride_totals.count != 'none' && userInfo.mainSport =='cycling') { %>
 <div class="row center-align">
-  <div>Number: <%= (userInfoStrava.recent_ride_totals.count/4).toFixed(2) %></div>
+  <div><h5>Average Weekly Stats</h5></div>
+  <div>Ride: <%= (userInfoStrava.recent_ride_totals.count/4).toFixed(1) %></div>
   <div>Time: <%= (userInfoStrava.recent_ride_totals.moving_time/(3600*4)).toFixed(0) %>h<%= (((userInfoStrava.recent_ride_totals.moving_time/4)%3600)/60).toFixed(0) %></div>
   <div>Distance: <%= (userInfoStrava.recent_ride_totals.distance/4000).toFixed(0) %> km</div>
   <div>Elevation: <%= (userInfoStrava.recent_ride_totals.elevation_gain/4).toFixed(0) %> m</div>
-  <div>Average speed: <%= (((userInfoStrava.recent_ride_totals.distance/1000)/(userInfoStrava.recent_ride_totals.moving_time))*3600).toFixed(1) %> km/h</div>
+  <div>Speed: <%= (((userInfoStrava.recent_ride_totals.distance/1000)/(userInfoStrava.recent_ride_totals.moving_time))*3600).toFixed(1) %> km/h</div>
 </div>
+<% } else if(userInfoStrava.recent_ride_totals.count != 'none' && userInfo.mainSport =='running') {%>
+  <div class="row center-align">
+    <div><h5>Average Weekly Stats</h5></div>
+    <div>Run: <%= (userInfoStrava.recent_run_totals.count/4).toFixed(1) %></div>
+    <div>Time: <%= (userInfoStrava.recent_run_totals.moving_time/(3600*4)).toFixed(0) %>h<%= (((userInfoStrava.recent_run_totals.moving_time/4)%3600)/60).toFixed(0) %></div>
+    <div>Distance: <%= (userInfoStrava.recent_run_totals.distance/4000).toFixed(0) %> km</div>
+    <div>Elevation: <%= (userInfoStrava.recent_run_totals.elevation_gain/4).toFixed(0) %> m</div>
+    <div>Pace: <%= 
+    ((userInfoStrava.recent_run_totals.moving_time/60)*(userInfoStrava.recent_run_totals.distance/1000))%>:<%=(((userInfoStrava.recent_run_totals.moving_time/60)*(userInfoStrava.recent_run_totals.distance/1000))%60)%>/km</div>
+  </div>
 <% } %>
 <div class="row">
   <div class="collection">
@@ -29,7 +39,6 @@
     
     <a href="/signout/" class="collection-item">Sign out</a>
   </div>
-  <!--<a href="/signout/" class="waves-effect waves-light btn blue-grey darken-3" id="signInBtn">Sign Out</a>-->
 </div>
 
 <script src="/js/toast.js"></script>

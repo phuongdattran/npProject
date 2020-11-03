@@ -1,4 +1,28 @@
-<%- include('../component/head'); %> 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+ integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+ crossorigin=""></script>
+    <title>npProject</title>
+  </head>
+  <body class="grey lighten-3">
 <%- include('../component/navbar'); %>
 <%- include('../component/pagetitle'); %>
 
@@ -11,27 +35,52 @@
     </div>
 <% } %>
 
-<h5><%= eventDetail.title %></h5>
+<h5>
+  <% if (participating==false) { %>
+    <form action="/api/participant/<%= eventDetail._id %>?token=<%= token %>" method="POST">
+      <button class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons">add</i></button>
+    </form>
+  <% } else { %>
+    <form action="/api/participant/<%= eventDetail._id %>?_method=DELETE&token=<%= token %>" method="POST">
+      <button class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons">remove</i></button>
+    </form>
+  <% } %>
+
+  <%= eventDetail.title %>
+</h5>
+
 <% if (eventDetail.sport == "cycling") { %>
-    <i class="material-icons">pedal_bike</i>
+    <i class="material-icons">pedal_bike</i> <%= eventDetail.meeting.date %> <%= eventDetail.meeting.time %>
 <% } else if (eventDetail.sport == "running") { %>
-    <i class="material-icons">directions_run</i>
+    <i class="material-icons">directions_run</i> <%= eventDetail.meeting.date %> at <%= eventDetail.meeting.time %>
 <% } %>
 <p>Place: <%= eventDetail.meeting.place %></p>
-<p>Date: <%= eventDetail.meeting.date %> at <%= eventDetail.meeting.time %></p>
 <p>Type: <%= eventDetail.type %></p>
 <p>Distance: <span id="totalDistance"><%= eventDetail.distance %></span> km</p>
 <p>Pace: <%= eventDetail.pace %></p>
 <p>Description: <%= eventDetail.description %></p>
-<p>Author: <%= eventDetail.author %></p>
+<p>Organizer: <%= eventDetail.author %></p>
 
 <% if (eventDetail.gps != "none"){ %>
 <div id="map"></div>
 <a class="waves-effect waves-light btn blue-grey darken-3" id="gpxDownload"></a>
-
 <script>let trackPath = `http://localhost:3000/gpx/<%= eventDetail.gps.filename %>`;</script>
 <script src="/js/eventDetail.js"></script>
 <script src="/js/gpx-parser.js"></script>
 <% } %>
 
+<ul class="collapsible">
+  <li>
+    <div class="collapsible-header"><%= participantInfo.length %> <% if(participantInfo.length<2) { %>
+    Participant
+    <% } else { %> Participants <% } %>
+    </div>
+    <div class="collapsible-body">
+      <% for(let i=0; i< participantInfo.length; i++) {%>
+        <p><%= participantInfo[i].firstname %> <%= participantInfo[i].lastname %></p>
+      <% } %>
+    </div>
+  </li>
+</ul>
+<script src="/js/collapsible.js"></script>
 <%- include('../component/footer'); %>

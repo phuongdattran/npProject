@@ -10,7 +10,7 @@
                 <label for="lastname">Lastname</label>
                 <input type="text" name="lastname" class="validate" value="<%= userInfo.lastname %>" required>
                 <label for="birthdate">Birthdate</label>
-                <input type="text" name="birthdate" class="datepicker validate" value="<%= userInfo.birthdate %>" required>
+                <input type="text" name="birthdate" class="datepicker validate birthdayDate" value="<%= userInfo.birthdate %>" required>
                 <label for="email">Email</label>
                 <input type="email" name="email" class="validate" value="<%= userInfo.email %>" required>
                 <label>Main sport</label>
@@ -22,7 +22,7 @@
                     <% } %>
                     >Cycling</option>
                     <option value="running"
-                    <% if( userInfo.mainSport == "cycling") { %>
+                    <% if( userInfo.mainSport == "running") { %>
                         selected
                     <% } %>
                     >Running</option>

@@ -1,19 +1,57 @@
-const express = require('express');
 const Event = require('../../model/event');
-const joi = require('joi');
+const joi = require('joi-oid');
 const fs = require('fs');
+const mongoose = require("mongoose");
 
 exports.getAllEvent = (req, res, next) => {
+    let filter = {};
+    let sort = '';
 
-    Event.find()
+    if (req.query) {
+        for (let property in req.query) {
+            filter[property] = req.query[property];
+        }
+        delete filter.sort; 
+    }
+    
+    if (req.query.sort) {
+        sort = req.query.sort
+    }
+
+    Event.find(filter).sort(sort)
     .then(events => res.status(200).json(events))
     .catch(error => res.status(400).json({error}));
 
 };
 
 exports.getOneEvent = (req, res, next) => {
-    Event.findOne({_id:req.params.id})
-    .then(event => res.status(200).json(event))
+    Event.aggregate([
+        {$match: {_id: mongoose.Types.ObjectId(req.params.id)}},
+        {$lookup: {
+            from: "users",
+            localField: "author",
+            foreignField: "_id",
+            as: "authorInfo"
+        }},
+        {$unwind: {
+            path: '$authorInfo'
+        }},
+        {$project: {
+            author: 0,
+            'authorInfo.mainSport': 0,
+            'authorInfo.email': 0,
+            'authorInfo.birthdate': 0,
+            'authorInfo.password': 0,
+            'authorInfo.__v': 0
+        }},
+        {$lookup: {
+            from: 'participants',
+            localField: '_id',
+            foreignField: 'eventId',
+            as: 'participants'
+        }},
+    ])
+    .then(event => {res.status(200).json(event[0])})
     .catch(error => res.status(404).json({error}));
 };
 
@@ -31,7 +69,7 @@ exports.createEvent = async (req, res, next) => {
         pace: joi.string().trim().required(),
         meeting: schemaMeeting, //not working
         description: joi.string().trim(),
-        author: joi.string().trim().required(),
+        author: joi.objectId().required(),
         gps: joi.string().trim()
     });
 

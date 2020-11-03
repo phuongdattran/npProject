@@ -1,6 +1,6 @@
 let mymap = L.map('map');
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+L.tileLayer('https://api.mapbox.com/styles/v1/pwetz/ckgz0df0r1why19k9ixujd2m9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoicHdldHoiLCJhIjoiY2tnejA5MXhyMHo4MjJ5cjE2cndkeHExYiJ9.wQtru8F6EwC_Xf42JRUpVg', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 50
 }).addTo(mymap);
@@ -26,4 +26,3 @@ fetch(trackPath)
 
         drawTrack(gpx.tracks[0]);
 });
-
