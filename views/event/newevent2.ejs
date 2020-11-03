@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col s12 m6 offset-m3 l4 offset-l4">
             <form action="/api/newevent/" method="POST" enctype="multipart/form-data">
-                <label for="distance">Distance</label>
+                <label for="pace">Distance</label>
                 <input type="text" name="distance" class="validate" required>
                 <label for="pace">Pace</label>
                 <input type="text" name="pace" class="validate" required>
@@ -17,8 +17,7 @@
                 <input type="text" name="meeting.time" class="timepicker validate" required>
                 <label for="place">Place</label>
                 <input type="text" name="meeting.place" class="validate" required>
-                <input type="hidden" name="author" value="<%= userInfo._id %>" required>
-                <p><label for="sport">Sport</label></p>
+                
                 <div class="file-field input-field">
                     <div class="btn blue-grey darken-3">
                       <span>GPS</span>
@@ -28,6 +27,12 @@
                       <input class="file-path validate" type="text">
                     </div>
                 </div>
+
+                <input type="hidden" name="title" class="validate" value="<%= eventDetail.title %>" required>
+                <input type="hidden" name="type" class="validate" value="<%= eventDetail.type %>" required>
+                <input type="hidden" name="description" class="validate" value="<%= eventDetail.description %>" required>
+                <input type="hidden" name="sport" class="validate" value="<%= eventDetail.sport %>" required>
+                <input type="hidden" name="author" class="validate" value="<%= eventDetail.author %>" required>
         </div>
     </div>
 </div>

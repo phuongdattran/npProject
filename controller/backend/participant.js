@@ -41,8 +41,6 @@ exports.createParticipant = async (req, res, next) => {
         res.status(400).send(result.error.details[0].message);
         return;
     }
-
-
     
     participant = new Participant({...participant})
     

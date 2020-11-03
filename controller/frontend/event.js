@@ -30,7 +30,7 @@ exports.eventPage = async (req, res, next) => {
   }
 };
 
-exports.newEventPage = async (req, res, next) => {
+exports.newEventPage1 = async (req, res, next) => {
     try {
         const token = req.cookies["token"];
         const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
@@ -46,10 +46,28 @@ exports.newEventPage = async (req, res, next) => {
         let userInfo = await fetch(url, myInit);
         userInfo = await userInfo.json();
 
-        res.render('event/newevent.ejs', {page: "New Event", arrow:"", userInfo});
+        res.render('event/newevent1.ejs', {page: "New Event", arrow:"", userInfo});
       } catch {
         res.status(401).render('noaccess.ejs', {page: "New Event", arrow:""});
       }
+};
+
+exports.newEventPage2 = async (req, res, next) => {
+  try {
+
+    let eventDetail= {};
+    eventDetail.title = req.body.title;
+    eventDetail.type = req.body.type;
+    eventDetail.description = req.body.description;
+    eventDetail.sport = req.body.sport;
+    eventDetail.author = req.body.author;
+
+    console.log(eventDetail)
+
+      res.render('event/newevent2.ejs', {page: "New Event", arrow:"", eventDetail});
+    } catch {
+      res.status(401).render('noaccess.ejs', {page: "New Event", arrow:""});
+    }
 };
 
 exports.eventDetailPage = async (req, res, next) => {

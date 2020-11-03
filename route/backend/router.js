@@ -24,6 +24,7 @@ router.post('/user/signup', userCtrl.createUser);
 router.post('/user/signin', userCtrl.signin);
 
 router.get('/event', eventCtrl.getAllEvent);
+router.get('/popularevent', eventCtrl.getPopularEvent);
 router.post('/newevent', multer, eventCtrl.createEvent);
 router.get('/event/:id', eventCtrl.getOneEvent);
 router.put('/event/:id', multer, eventCtrl.updateEvent);

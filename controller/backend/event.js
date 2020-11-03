@@ -1,4 +1,5 @@
 const Event = require('../../model/event');
+const Participant = require('../../model/participant');
 const joi = require('joi-oid');
 const fs = require('fs');
 const mongoose = require("mongoose");
@@ -24,19 +25,54 @@ exports.getAllEvent = (req, res, next) => {
 
 };
 
+exports.getPopularEvent = (req, res, next) => {
+    Participant.aggregate([
+        {
+            '$group': {
+            '_id': '$eventId', 
+            'nbrOfParticipant': {
+                '$sum': 1
+            }
+        }}, 
+        {
+            '$sort': {
+            'nbrOfParticipant': -1
+        }}, 
+        {
+            '$limit': 5
+        }, 
+        {
+            '$lookup': {
+            'from': 'events', 
+            'localField': '_id', 
+            'foreignField': '_id', 
+            'as': 'eventInfo'
+        }}, 
+        {
+            '$unwind': {
+            'path': '$eventInfo'
+        }}
+    ]).then(event => {res.status(200).json(event)})
+    .catch(error => res.status(400).json({error}));
+};
+
 exports.getOneEvent = (req, res, next) => {
     Event.aggregate([
-        {$match: {_id: mongoose.Types.ObjectId(req.params.id)}},
-        {$lookup: {
+        {
+            $match: {_id: mongoose.Types.ObjectId(req.params.id)}},
+        {
+            $lookup: {
             from: "users",
             localField: "author",
             foreignField: "_id",
             as: "authorInfo"
         }},
-        {$unwind: {
+        {
+            $unwind: {
             path: '$authorInfo'
         }},
-        {$project: {
+        {
+            $project: {
             author: 0,
             'authorInfo.mainSport': 0,
             'authorInfo.email': 0,
@@ -44,7 +80,8 @@ exports.getOneEvent = (req, res, next) => {
             'authorInfo.password': 0,
             'authorInfo.__v': 0
         }},
-        {$lookup: {
+        {
+            $lookup: {
             from: 'participants',
             localField: '_id',
             foreignField: 'eventId',
@@ -110,11 +147,16 @@ exports.updateEvent = (req, res, next) => {
 exports.deleteEvent = (req, res, next) => {
     Event.findOne({_id:req.params.id})
     .then(event => {
-        fs.unlink(`./public/gpx/${JSON.parse(event.gps).filename}`, () => {
-            Event.deleteOne({_id: req.params.id})
+        if(event.gps != 'none') {
+        fs.unlink(`./public/gpx/${JSON.parse(event.gps).filename}`, () => {});
+        }
+        Event.deleteOne({_id: req.params.id})
+        .then(Participant.deleteMany({eventId: req.params.id})
             .then(()=> res.status(200).redirect('/events?delete'))
-            .catch(error => res.status(400).json({error}));
-        });
+            .catch(error => res.status(400).json({error}))
+            )
+        .catch(error => res.status(400).json({error}));
+        
     })
     .catch(error => res.status(404).json({error}));
 };
