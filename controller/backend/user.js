@@ -3,6 +3,7 @@ const User = require('../../model/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const joi = require('joi-oid');
+const nodemailer = require('nodemailer');
 
 exports.getAllUser = (req, res, next) => {
     User.find()
@@ -31,7 +32,10 @@ exports.createUser = async (req, res, next) => {
         mainSport: joi.string().trim().required(),
         email: joi.string().trim().email().required(),
         password: joi.string().pattern(new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')).required(), //1 upper, 1 lower, 1 number, 1 special char, 8 min length
-        confirmPassword: joi.string().pattern(new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')).required(),
+        confirmPassword: joi.any().equal(joi.ref('password'))
+        .required()
+        .label('Confirm password')
+        .messages({ 'any.only': '{{#label}} does not match' }),
         status: joi.any().valid('member')
     });
 
@@ -59,7 +63,7 @@ exports.updateUser = (req, res, next) => {
     if (req.body.password) {
         bcrypt.hash(req.body.password, 10)
         .then(hash => {
-            console.log(hash);
+            //console.log(hash);
             User.updateOne({_id: req.params.id}, {...req.body, _id: req.params.id, password: hash})
             .then(() => {
                 res.status(200).redirect('/myprofile');
@@ -105,4 +109,45 @@ exports.signin = (req, res, next) => {
         .catch(error => res.status(500).json({error}));
     })
     .catch (error => res.status(500).json({error}));
+};
+
+exports.lostPwd = (req, res, next) => {
+
+    User.findOne({email:req.body.email})
+    .then(user => {
+        let transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true, // use SSL
+            auth: {
+              user: 'becode.netp@gmail.com',
+              pass: '123Banane!'
+            }
+          });
+          
+          let mailOptions = {
+            from: 'contact@npproject.com',
+            to: req.body.email,
+            subject: 'Sending Email using Node.js',
+            html: `
+            <h1>npProject</h1>
+            <p>Click on the link to change your password: </p>
+            <p>
+                <a href="http://localhost:3000/changepwd?id=${user._id}">Change password</a>
+            </p>
+            `
+          };
+          
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+              res.redirect('/');
+            }
+          });
+    })
+    .catch(error => res.status(404).json({error}));
+
+    
 };

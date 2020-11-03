@@ -24,7 +24,11 @@ router.get("/signup3", userCtrl.signupPage3);
 router.get("/signin", userCtrl.signinPage);
 router.get("/signout", userCtrl.signOut);
 
+router.get("/lostpwd", userCtrl.lostPwdPage);
+router.get("/changepwd", userCtrl.changePwdPage);
+
 router.get("/members", membersCtrl.membersPage);
+router.get("/members/:id", membersCtrl.memberProfilePage);
 
 router.get("/myprofile", myProfileCtrl.myProfilePage);
 router.get("/dcstrava", myProfileCtrl.dcStrava);

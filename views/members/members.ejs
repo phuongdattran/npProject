@@ -10,7 +10,9 @@
                 <li class="collection-item avatar">
                     <i class="material-icons circle blue-grey darken-3">person</i>
                     <!--<img src="images/yuna.jpg" alt="" class="circle">-->
-                    <span class="title"><%= userInfo[i].firstname %> <%= userInfo[i].lastname %></span>
+                    <a href="/members/<%= userInfo[i]._id %>">
+                        <span class="title"><%= userInfo[i].firstname %> <%= userInfo[i].lastname %></span>
+                    </a>
                     <p>city </p>
                     <p>country</p>
                     <a href="#!" class="secondary-content"><i class="material-icons">add</i></a>

@@ -14,6 +14,8 @@ router.get('/user/last/user', userCtrl.getLastUser);
 router.put('/user/:id', userCtrl.updateUser);
 router.delete('/user/:id', userCtrl.deleteUser);
 
+router.post('/lostpwd', userCtrl.lostPwd);
+
 router.get('/strava', stravaCtrl.getAllStrava);
 router.get('/strava/:id', stravaCtrl.getOneStrava);
 router.post('/strava', stravaCtrl.createStrava);

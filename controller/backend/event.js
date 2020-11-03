@@ -51,7 +51,12 @@ exports.getPopularEvent = (req, res, next) => {
         {
             '$unwind': {
             'path': '$eventInfo'
-        }}
+        }},
+        {
+            $project: {
+            _id: 0,
+            'eventInfo.__v': 0
+        }},
     ]).then(event => {res.status(200).json(event)})
     .catch(error => res.status(400).json({error}));
 };

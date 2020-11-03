@@ -7,11 +7,11 @@
   <p><%= userInfo.firstname %> <%= userInfo.lastname %></p>
 </div>
 <div class="row center-align">
-  <% if (userInfo.mainSport == "cycling") { %>
-      <i class="material-icons">pedal_bike</i> 
-  <% } else if (userInfo.mainSport == "running") { %>
-      <i class="material-icons">directions_run</i> 
-  <% } %>
+    <% if (userInfo.mainSport == "cycling") { %>
+        <i class="material-icons">pedal_bike</i> 
+    <% } else if (userInfo.mainSport == "running") { %>
+        <i class="material-icons">directions_run</i> 
+    <% } %>
 </div>
 <% if(userInfoStrava.recent_ride_totals.count != 'none' && userInfo.mainSport =='cycling') { %>
 <div class="row center-align">
@@ -33,22 +33,5 @@
     ((userInfoStrava.recent_run_totals.moving_time/60)*(userInfoStrava.recent_run_totals.distance/1000))%>:<%=(((userInfoStrava.recent_run_totals.moving_time/60)*(userInfoStrava.recent_run_totals.distance/1000))%60)%>/km</div>
   </div>
 <% } %>
-<div class="row">
-  <div class="collection">
-    <a href="#!" class="collection-item">My events</a>
-    <a href="/editmyinfo" class="collection-item">Edit my info</a>
-    <a href="/changepwd?id=<%= userInfo._id %>" class="collection-item">Change password</a>
-
-    <% if(userInfoStrava.recent_ride_totals.count != 'none') { %>
-      <a href="/dcstrava/" class="collection-item">Disconnect my Strava</a>
-    <% } else{ %>
-      <a href="https://www.strava.com/oauth/authorize?client_id=55086&response_type=code&redirect_uri=http://localhost:3000/myprofile/&approval_prompt=force&scope=read" class="collection-item">Connect my Strava</a>
-    <% } %>
-    
-    <a href="/signout/" class="collection-item">Sign out</a>
-  </div>
-</div>
-
-<script src="/js/toast.js"></script>
 
 <%- include('../component/footer'); %>

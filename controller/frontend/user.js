@@ -1,4 +1,3 @@
-const jwt = require('jsonwebtoken');
 global.fetch = require("node-fetch");
 
 exports.signupPage1 = (req, res, next) => {
@@ -36,4 +35,13 @@ exports.signinPage = (req, res, next) => {
 
 exports.signOut = (req, res, next) => {
     res.clearCookie('token').redirect('/home/');
+};
+
+exports.lostPwdPage = (req, res, next) => {
+    res.render('members/lostpwd.ejs');
+};
+
+exports.changePwdPage = (req, res, next) => {
+    const userId = req.query.id;
+    res.render('members/changepwd.ejs', {userId});
 };
