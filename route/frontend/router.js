@@ -33,5 +33,6 @@ router.get("/members/:id", membersCtrl.memberProfilePage);
 router.get("/myprofile", myProfileCtrl.myProfilePage);
 router.get("/dcstrava", myProfileCtrl.dcStrava);
 router.get("/editmyinfo", myProfileCtrl.editMyInfoPage);
+router.get("/following", myProfileCtrl.followingPage);
 
 module.exports = router;

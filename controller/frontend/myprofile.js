@@ -214,3 +214,24 @@ exports.editMyInfoPage = async (req, res, next) => {
       res.status(401).render('noaccess.ejs', {page: "My Profile", arrow:"hidden"});
     }
 };
+
+exports.followingPage = async (req, res, next) => {
+  try {
+      const token = req.cookies["token"];
+      const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+      const userId = decodedToken.userId;
+      let url = `http://localhost:3000/api/following/${userId}`;
+
+      let myInit = {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      };
+
+      let followingInfo = await fetch(url, myInit);
+      followingInfo = await followingInfo.json();
+      res.render('myprofile/following.ejs', {page: "Following", arrow:"", followingInfo, token});
+    } catch {
+      res.status(401).render('noaccess.ejs', {page: "Following", arrow:"hidden"});
+    }
+};

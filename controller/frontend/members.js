@@ -14,7 +14,7 @@ exports.membersPage = async (req, res, next) => {
         let userInfo = await fetch(url, myInit);
         userInfo = await userInfo.json();
           
-        res.render('members/members.ejs', {page: "Members", arrow:"hidden", userInfo});
+        res.render('members/members.ejs', {page: "Members", arrow:"hidden", userInfo, token});
 
       } catch {
         res.status(401).json({ error: "Unauthenticated Request" });

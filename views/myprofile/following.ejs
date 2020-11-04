@@ -5,19 +5,16 @@
 <div class="row">
     <div class="col s12 m8 l4 offset-m2 offset-l4">
         <ul class="collection">
-            <% for(let i=0; i<userInfo.length; i++) { %>
+            <% for(let i=0; i<followingInfo.length; i++) { %>
                 <li class="collection-item avatar">
                     <i class="material-icons circle blue-grey darken-3">person</i>
                     <!--<img src="images/yuna.jpg" alt="" class="circle">-->
-                    <a href="/members/<%= userInfo[i]._id %>">
-                        <span class="title"><%= userInfo[i].firstname %> <%= userInfo[i].lastname %></span>
+                    <a href="/members/<%= followingInfo[i].followingInfo._id %>">
+                        <span class="title"><%= followingInfo[i].followingInfo.firstname %> <%= followingInfo[i].followingInfo.lastname %></span>
                     </a>
                     <p>city </p>
                     <p>country</p>
-                    <form action="/api/following/<%= userInfo[i]._id %>?token=<%= token %>" method="POST">
-                        <button class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons">add</i></button>
-                    </form>
-                    <form action="/api/following/<%= userInfo[i]._id %>?token=<%= token %>&_method=DELETE" method="POST">
+                    <form action="/api/following/<%= followingInfo[i].followingInfo._id %>?token=<%= token %>&_method=DELETE" method="POST">
                         <button class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons">remove</i></button>
                     </form>
                 </li>
