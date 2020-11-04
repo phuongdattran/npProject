@@ -35,7 +35,7 @@
     </div>
 <% } %>
 
-<h5>
+<div class="titleContainer">
   <% if (participating==false) { %>
     <form action="/api/participant/<%= eventDetail._id %>?token=<%= token %>" method="POST">
       <button class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons">add</i></button>
@@ -46,24 +46,37 @@
     </form>
   <% } %>
 
-  <%= eventDetail.title %>
-</h5>
+  <h5>
+    <%= eventDetail.title %>
+  </h5>
+</div>
 
 <% if (eventDetail.sport == "cycling") { %>
     <i class="material-icons">pedal_bike</i> <%= eventDetail.meeting.date %> <%= eventDetail.meeting.time %>
 <% } else if (eventDetail.sport == "running") { %>
     <i class="material-icons">directions_run</i> <%= eventDetail.meeting.date %> at <%= eventDetail.meeting.time %>
 <% } %>
-<p>Place: <%= eventDetail.meeting.place %></p>
-<p>Type: <%= eventDetail.type %></p>
-<p>Distance: <span id="totalDistance"><%= eventDetail.distance %></span> km</p>
-<p>Pace: <%= eventDetail.pace %></p>
-<p>Description: <%= eventDetail.description %></p>
-<p>Organizer: <%= eventDetail.author %></p>
+
+<div id="eventInfo">
+  <p class="bold">Place:</p>
+  <p><%= eventDetail.meeting.place %></p>
+  <p class="bold">Type:</p>
+  <p><%= eventDetail.type %></p>
+  <p class="bold">Distance:</p>
+  <p><span id="totalDistance"><%= eventDetail.distance %></span> km</p>
+  <p class="bold">Pace:</p>
+  <p><%= eventDetail.pace %></p>
+  <p class="bold">Description:</p>
+  <p><%= eventDetail.description %></p>
+  <p class="bold">Organizer:</p>
+  <p><%= eventDetail.author %></p>
+</div>
 
 <% if (eventDetail.gps != "none"){ %>
 <div id="map"></div>
-<a class="waves-effect waves-light btn blue-grey darken-3" id="gpxDownload"></a>
+<div class="gpxBtn">
+  <a class="waves-effect waves-light btn blue-grey darken-3" id="gpxDownload"></a>
+</div>
 <script>let trackPath = `http://localhost:3000/gpx/<%= eventDetail.gps.filename %>`;</script>
 <script src="/js/eventDetail.js"></script>
 <script src="/js/gpx-parser.js"></script>
@@ -77,7 +90,7 @@
     </div>
     <div class="collapsible-body">
       <% for(let i=0; i< participantInfo.length; i++) {%>
-        <p><%= participantInfo[i].firstname %> <%= participantInfo[i].lastname %></p>
+        <p><a href="/members/<%= participantInfo[i]._id %>"><%= participantInfo[i].firstname %> <%= participantInfo[i].lastname %></a></p>
       <% } %>
     </div>
   </li>

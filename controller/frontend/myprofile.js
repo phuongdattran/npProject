@@ -230,6 +230,7 @@ exports.followingPage = async (req, res, next) => {
 
       let followingInfo = await fetch(url, myInit);
       followingInfo = await followingInfo.json();
+
       res.render('myprofile/following.ejs', {page: "Following", arrow:"", followingInfo, token});
     } catch {
       res.status(401).render('noaccess.ejs', {page: "Following", arrow:"hidden"});

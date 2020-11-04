@@ -12,14 +12,22 @@
                     <a href="/members/<%= userInfo[i]._id %>">
                         <span class="title"><%= userInfo[i].firstname %> <%= userInfo[i].lastname %></span>
                     </a>
-                    <p>city </p>
-                    <p>country</p>
-                    <form action="/api/following/<%= userInfo[i]._id %>?token=<%= token %>" method="POST">
+                    <% 
+                    let alreadyFollowing = false;
+                    followingInfo.forEach(element => {
+                        if (element.followingInfo._id == userInfo[i]._id) {
+                            alreadyFollowing = true; %>
+                            <form class="formBtn" action="/api/following/<%= userInfo[i]._id %>?token=<%= token %>&_method=DELETE" method="POST">
+                            <button class="waves-effect waves-light btn grey lighten-1"><i class="material-icons">remove</i></button>
+                    </form>
+                    <%    }
+                    });
+                    if(alreadyFollowing==false) {%>
+                    <form class="formBtn" action="/api/following/<%= userInfo[i]._id %>?token=<%= token %>" method="POST">
                         <button class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons">add</i></button>
                     </form>
-                    <form action="/api/following/<%= userInfo[i]._id %>?token=<%= token %>&_method=DELETE" method="POST">
-                        <button class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons">remove</i></button>
-                    </form>
+                    <% } %>
+
                 </li>
             <% } %>
         </ul>

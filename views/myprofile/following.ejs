@@ -12,10 +12,8 @@
                     <a href="/members/<%= followingInfo[i].followingInfo._id %>">
                         <span class="title"><%= followingInfo[i].followingInfo.firstname %> <%= followingInfo[i].followingInfo.lastname %></span>
                     </a>
-                    <p>city </p>
-                    <p>country</p>
                     <form action="/api/following/<%= followingInfo[i].followingInfo._id %>?token=<%= token %>&_method=DELETE" method="POST">
-                        <button class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons">remove</i></button>
+                        <button class="waves-effect waves-light btn grey lighten-1"><i class="material-icons">remove</i></button>
                     </form>
                 </li>
             <% } %>

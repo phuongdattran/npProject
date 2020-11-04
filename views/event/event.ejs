@@ -2,30 +2,21 @@
 <%- include('../component/navbar'); %>
 <%- include('../component/pagetitle'); %>
 
-<div id="filters">
-  <a href="/events?sport=cycling" class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons">pedal_bike</i></a>
-  <a href="/events?sport=running" class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons">directions_run</i></a>
+<div class="filterContainer">
+  <div id="filters">
+    <a href="/events?sport=cycling" class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons">pedal_bike</i></a>
+    <a href="/events?sport=running" class="waves-effect waves-light btn blue-grey darken-3"><i class="material-icons">directions_run</i></a>
+  </div>
+  <form action="/events" id="sortBy" method="GET">
+    <select name="sort" onchange="this.form.submit()">
+      <option value="" disabled selected>Sort by</option>
+      <option value="-_id">New</option>
+      <option value="date">Date</option>
+      <option value="title">A-Z</option>
+    </select>
+    <input type="hidden" name="sport" id="sport" value="">
+  </form>
 </div>
-<ul class="collapsible">
-  <li>
-    <div class="collapsible-header" id="filterDiv">
-      <a class="waves-effect waves-light btn blue-grey darken-3">Sort By</a>
-    </div>
-    <div class="collapsible-body">
-      <div class="input-field col s12">
-        <form action="/events" id="sortBy" method="GET">
-          <select name="sort" onchange="this.form.submit()">
-            <option value="" disabled selected>Choose an option</option>
-            <option value="-_id">New</option>
-            <option value="date">Date</option>
-            <option value="title">A-Z</option>
-          </select>
-          <input type="hidden" name="sport" id="sport" value="">
-        </form>
-      </div>
-    </div>
-  </li>
-</ul>
 
 <% for(let i=0; i< events.length; i++) { %>
 <div class="row">

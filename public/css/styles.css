@@ -42,6 +42,7 @@
 
 :root {
     --main-color: #37474f;
+    --bg-color: #eeeeee;
 }
 
 .nav-extended {
@@ -206,6 +207,7 @@ main {
     position: fixed;
     bottom: 70px;
     right: 20px;
+    animation: slideFromRight 0.5s ease-in;
 }
 
 #addBtn:hover {
@@ -231,8 +233,77 @@ main {
     justify-content: space-around;
 }
 
+.collapsible-header {
+    justify-content: center;
+}
+
 .collapsible-body {
     background-color: white;
     padding: 5px 10px;
 }
 
+.collapsible {
+    box-shadow: none;
+    border: none;
+}
+
+.avatar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filterContainer {
+    display: flex;
+    justify-content: space-around;
+    animation: slideFromTop 0.5s ease-in;
+}
+
+/*Animation*/
+@keyframes slideFromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromRight {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromTop {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#eventInfo {
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+#eventInfo p {
+    margin: 0px;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.titleContainer {
+    display: flex;
+}
+
+.gpxBtn {
+    text-align: center;
+}

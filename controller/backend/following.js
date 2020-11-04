@@ -42,8 +42,6 @@ exports.createFollowing = async (req, res, next) => {
     const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
     const userId = decodedToken.userId;
 
-    console.log(userId)
-
     let following = {
         followingId: req.params.followingId,
         userId: userId,

@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 exports.membersPage = async (req, res, next) => {
     try {
         const token = req.cookies["token"];
+        const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+        const userId = decodedToken.userId;
         let url = `http://localhost:3000/api/user/`;
       
         myInit = {
@@ -13,8 +15,13 @@ exports.membersPage = async (req, res, next) => {
 
         let userInfo = await fetch(url, myInit);
         userInfo = await userInfo.json();
+
+        let urlFollowing = `http://localhost:3000/api/following/${userId}`;
+
+        let followingInfo = await fetch(urlFollowing, myInit);
+        followingInfo = await followingInfo.json();
           
-        res.render('members/members.ejs', {page: "Members", arrow:"hidden", userInfo, token});
+        res.render('members/members.ejs', {page: "Members", arrow:"hidden", userInfo, token, followingInfo});
 
       } catch {
         res.status(401).json({ error: "Unauthenticated Request" });
