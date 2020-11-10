@@ -12,7 +12,7 @@ const followingCtrl = require("../../controller/backend/following");
 router.get('/user', authfetch, userCtrl.getAllUser);
 router.get('/user/:id', authfetch, userCtrl.getOneUser);
 router.get('/user/last/user', authfetch, userCtrl.getLastUser);
-router.put('/user/:id', authfetch, userCtrl.updateUser);
+router.put('/user/:id', userCtrl.updateUser);
 router.delete('/user/:id', authfetch, userCtrl.deleteUser);
 
 router.post('/lostpwd', userCtrl.lostPwd);
