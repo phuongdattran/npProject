@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-//const auth = require("../../middleware/auth");
+const authfetch = require("../../middleware/authfetch");
 const multer = require('../../middleware/multer-config');
 
 const userCtrl = require("../../controller/backend/user");
@@ -9,11 +9,11 @@ const eventCtrl = require("../../controller/backend/event");
 const participantCtrl = require("../../controller/backend/participant");
 const followingCtrl = require("../../controller/backend/following");
 
-router.get('/user', userCtrl.getAllUser);
-router.get('/user/:id', userCtrl.getOneUser);
-router.get('/user/last/user', userCtrl.getLastUser);
-router.put('/user/:id', userCtrl.updateUser);
-router.delete('/user/:id', userCtrl.deleteUser);
+router.get('/user', authfetch, userCtrl.getAllUser);
+router.get('/user/:id', authfetch, userCtrl.getOneUser);
+router.get('/user/last/user', authfetch, userCtrl.getLastUser);
+router.put('/user/:id', authfetch, userCtrl.updateUser);
+router.delete('/user/:id', authfetch, userCtrl.deleteUser);
 
 router.post('/lostpwd', userCtrl.lostPwd);
 

@@ -130,6 +130,7 @@ main {
 
 .card {
     max-width: 415px;
+    margin: .5rem auto;
 }
 
 .card-title {
@@ -306,4 +307,18 @@ main {
 
 .gpxBtn {
     text-align: center;
+}
+
+#map {
+    margin: 0 auto;
+}
+
+#socialLinks {
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.eventSport {
+    margin-left: 15px;
 }

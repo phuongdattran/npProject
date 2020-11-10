@@ -34,7 +34,7 @@ exports.homePage = async (req, res, next) => {
         )
         eventInfo = promises;
 
-        res.render('home.ejs', {page: "Home", arrow:"hidden", eventInfo, popularEvent})
+        res.status(200).render('home.ejs', {page: "Home", arrow:"hidden", eventInfo, popularEvent})
     } catch {
         res.render('index.ejs');
     }
@@ -55,9 +55,9 @@ exports.indexPage = async (req, res, next) => {
 
         let userInfo = await fetch(url, myInit);
         userInfo = await userInfo.json();
-        res.redirect('/home/');
+        res.status(200).redirect('/home/');
     } catch {
-        res.render('index.ejs');
+        res.status(200).render('index.ejs');
     }
 };
 

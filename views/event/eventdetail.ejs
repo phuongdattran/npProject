@@ -50,12 +50,13 @@
     <%= eventDetail.title %>
   </h5>
 </div>
-
-<% if (eventDetail.sport == "cycling") { %>
-    <i class="material-icons">pedal_bike</i> <%= eventDetail.meeting.date %> <%= eventDetail.meeting.time %>
-<% } else if (eventDetail.sport == "running") { %>
-    <i class="material-icons">directions_run</i> <%= eventDetail.meeting.date %> at <%= eventDetail.meeting.time %>
-<% } %>
+<div class="eventSport">
+  <% if (eventDetail.sport == "cycling") { %>
+      <i class="material-icons">pedal_bike</i> <%= eventDetail.meeting.date %> <%= eventDetail.meeting.time %>
+  <% } else if (eventDetail.sport == "running") { %>
+      <i class="material-icons">directions_run</i> <%= eventDetail.meeting.date %> at <%= eventDetail.meeting.time %>
+  <% } %>
+</div>
 
 <div id="eventInfo">
   <p class="bold">Place:</p>

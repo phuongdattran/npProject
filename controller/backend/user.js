@@ -123,9 +123,9 @@ exports.lostPwd = (req, res, next) => {
               user: 'becode.netp@gmail.com',
               pass: '123Banane!'
             }
-          });
+        });
           
-          let mailOptions = {
+        let mailOptions = {
             from: 'contact@npproject.com',
             to: req.body.email,
             subject: 'Sending Email using Node.js',
@@ -136,8 +136,8 @@ exports.lostPwd = (req, res, next) => {
                 <a href="http://localhost:3000/changepwd?id=${user._id}">Change password</a>
             </p>
             `
-          };
-          
+        };
+
           transporter.sendMail(mailOptions, function(error, info){
             if (error) {
               console.log(error);

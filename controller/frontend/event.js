@@ -62,8 +62,6 @@ exports.newEventPage2 = async (req, res, next) => {
     eventDetail.sport = req.body.sport;
     eventDetail.author = req.body.author;
 
-    console.log(eventDetail)
-
       res.render('event/newevent2.ejs', {page: "New Event", arrow:"", eventDetail});
     } catch {
       res.status(401).render('noaccess.ejs', {page: "New Event", arrow:""});
@@ -91,11 +89,15 @@ exports.eventDetailPage = async (req, res, next) => {
       eventDetail.gps = gpx;
     }
 
-    let author = `${eventDetail.authorInfo.firstname} ${eventDetail.authorInfo.lastname}`;
-    eventDetail.author = author;
+    eventDetail.author = `${eventDetail.authorInfo.firstname} ${eventDetail.authorInfo.lastname}`;
+    
+    let userUrl = `http://localhost:3000/api/user/${userId}`;
+    let userInfo = await fetch(userUrl, myInit);
+    userInfo = await userInfo.json();
 
-    let userStatus = eventDetail.authorInfo.status;
-    if (eventDetail.authorInfo._id == userId) {
+    let userStatus = userInfo.status;
+    
+    if (userInfo._id == eventDetail.authorInfo._id) {
       userStatus = "author";
     }
 

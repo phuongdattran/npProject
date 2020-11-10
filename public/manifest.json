@@ -1,0 +1,17 @@
+{
+    "name": "npProject",
+    "short_name": "npProject",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#263238",
+    "theme_color": "#37474f",
+    "orientation": "portrait-primary",
+    "icon": [
+        {
+            "src": "/img/icon.png",
+            "type": "image/png",
+            "sizes": "144x144"
+        }
+    ]
+    
+}
