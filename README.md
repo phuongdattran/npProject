@@ -9,6 +9,10 @@
 
 - Team challenge :  `solo`
 
+## Take a look
+The project was developed for mobile first. It is recommanded to use the dev tool of your browser to visit the website.
+[npProject](https://exonpproject.herokuapp.com/)
+
 ## Objectif
 Put into practice everything I learned at BeCode after 4 months and especially Node.js.
 
@@ -21,13 +25,13 @@ A website to create and participate in different kinds of sport events.
 - Members system: follow different members and look at their stats
 
 **Permissions**
-- Admin is able to edit or delete every event, comment and member info
-- Member is only able to edit or delete his own events, comments and info
-- Guest can only see the event list and can't look at the members list or the comments
+- Admin is able to edit or delete every event
+- Member is only able to edit or delete his own events
+- Guest cannot acces the website without registration
 
 **API**
 - Strava API to retrieve member stats for his profile
-- Weather API to display the weather for each event
+- Mapbox API to display custom map tiles
 
 ## Mock up
 ![mockup](https://user-images.githubusercontent.com/66431442/96180709-21380400-0f33-11eb-8c01-a3f91ec22ab0.jpg)
