@@ -10,7 +10,7 @@
 - Team challenge :  `solo`
 
 ## Take a look
-The project was developed for mobile first. It is recommanded to use the dev tool of your browser to visit the website.
+The project was developed for mobile first. It is recommanded to use the dev tool of your browser to visit the website.   
 [npProject](https://exonpproject.herokuapp.com/)
 
 ## Objectif
