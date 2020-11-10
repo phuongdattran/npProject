@@ -21,7 +21,7 @@ A website to create and participate in different kinds of sport events.
 
 **Features**
 - Session system: sign up, sign in, sign out, lost password, different permissions
-- Event system: CRUD, possibility to take part, write comments and sort the event list
+- Event system: CRUD, possibility to take part and sort the event list
 - Members system: follow different members and look at their stats
 
 **Permissions**
@@ -44,6 +44,22 @@ User collection schema
 
 ![Capture](https://user-images.githubusercontent.com/66431442/96180885-6ceaad80-0f33-11eb-9d91-b6690fb66c07.JPG)
 
+Event collection schema
+
+![Capture](https://user-images.githubusercontent.com/66431442/98675996-4b76b900-235b-11eb-9cca-cc6e0b8f631a.JPG)
+
+Participant collection scema
+
+![Capture](https://user-images.githubusercontent.com/66431442/98676234-9db7da00-235b-11eb-9d5f-97efeda4f600.JPG)
+
+Following collection schema
+
+![Capture](https://user-images.githubusercontent.com/66431442/98676361-cb9d1e80-235b-11eb-85d7-8c444ea4770d.JPG)
+
+Strava collection schema
+
+![Capture](https://user-images.githubusercontent.com/66431442/98676519-fe471700-235b-11eb-826f-9f4907ab7fc3.JPG)
+
 ## Built with
 
 **Backend :** 
@@ -55,3 +71,4 @@ User collection schema
 - CSS3
 - Javascript
 - Materialize
+- Leaflet
