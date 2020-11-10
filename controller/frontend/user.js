@@ -12,7 +12,7 @@ exports.signupPage2 = (req, res, next) => {
 exports.signupPage3 = async (req, res, next) => {
     try {
         const token = req.cookies['token'];
-        let url = `http://localhost:3000/api/user/last/user`;
+        let url = `https://exonpproject.herokuapp.com/api/user/last/user`;
 
         let myInit = {
             headers: {

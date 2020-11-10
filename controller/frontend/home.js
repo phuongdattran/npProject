@@ -6,7 +6,7 @@ exports.homePage = async (req, res, next) => {
         const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
         const userId = decodedToken.userId;
 
-        let urlPopularEvent = `http://localhost:3000/api/popularEvent`;
+        let urlPopularEvent = `https://exonpproject.herokuapp.com/api/popularEvent`;
 
         myInit = {
             headers: {
@@ -17,7 +17,7 @@ exports.homePage = async (req, res, next) => {
         let popularEvent = await fetch(urlPopularEvent, myInit);
         popularEvent = await popularEvent.json();
 
-        let url = `http://localhost:3000/api/participant/user/${userId}`;
+        let url = `https://exonpproject.herokuapp.com/api/participant/user/${userId}`;
 
         let eventInfo = await fetch(url, myInit);
         eventInfo = await eventInfo.json();
@@ -26,7 +26,7 @@ exports.homePage = async (req, res, next) => {
 
         await Promise.all(
           eventInfo.map(async (element)=>{
-            let eventFetchUrl = `http://localhost:3000/api/event/${element.eventId}`;
+            let eventFetchUrl = `https://exonpproject.herokuapp.com/api/event/${element.eventId}`;
             let eventFetchInfo = await fetch(eventFetchUrl, myInit);
             eventFetchInfo = await eventFetchInfo.json();
             promises.push(eventFetchInfo)
@@ -45,7 +45,7 @@ exports.indexPage = async (req, res, next) => {
         const token = req.cookies['token'];
         const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
         const userId = decodedToken.userId;
-        let url = `http://localhost:3000/api/user/${userId}`;
+        let url = `https://exonpproject.herokuapp.com/api/user/${userId}`;
 
         myInit = {
             headers: {

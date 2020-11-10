@@ -5,7 +5,7 @@ exports.membersPage = async (req, res, next) => {
         const token = req.cookies["token"];
         const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
         const userId = decodedToken.userId;
-        let url = `http://localhost:3000/api/user/`;
+        let url = `https://exonpproject.herokuapp.com/api/user/`;
       
         myInit = {
           headers: {
@@ -16,7 +16,7 @@ exports.membersPage = async (req, res, next) => {
         let userInfo = await fetch(url, myInit);
         userInfo = await userInfo.json();
 
-        let urlFollowing = `http://localhost:3000/api/following/${userId}`;
+        let urlFollowing = `https://exonpproject.herokuapp.com/api/following/${userId}`;
 
         let followingInfo = await fetch(urlFollowing, myInit);
         followingInfo = await followingInfo.json();
@@ -33,7 +33,7 @@ exports.memberProfilePage = async (req, res, next) => {
       
     const token = req.cookies["token"];
     const userId = req.params.id;
-    let url = `http://localhost:3000/api/user/${userId}`;
+    let url = `https://exonpproject.herokuapp.com/api/user/${userId}`;
 
     let myInit = {
       headers: {
@@ -45,7 +45,7 @@ exports.memberProfilePage = async (req, res, next) => {
     userInfo = await userInfo.json();
 
 /////////////////retrieve token from db///////////////////////
-    let urlGetStravaConnectionData = `http://localhost:3000/api/strava/${userId}`;
+    let urlGetStravaConnectionData = `https://exonpproject.herokuapp.com/api/strava/${userId}`;
 
     myInitStravaConnectionData = {
       headers: {
@@ -91,7 +91,7 @@ exports.memberProfilePage = async (req, res, next) => {
         let updatedData = await fetch(urlStrava, myInitTokenRefresh);
         updatedData = await updatedData.json();
 
-        const urlSaveInDbUpdate = `http://localhost:3000/api/strava/${userId}`;
+        const urlSaveInDbUpdate = `https://exonpproject.herokuapp.com/api/strava/${userId}`;
         const myInitUpdatedTokenSave = {
             method: "PUT",
             headers: {

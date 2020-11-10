@@ -5,7 +5,7 @@ exports.myProfilePage = async (req, res, next) => {
         const token = req.cookies["token"];
         const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
         const userId = decodedToken.userId;
-        let url = `http://localhost:3000/api/user/${userId}`;
+        let url = `https://exonpproject.herokuapp.com/api/user/${userId}`;
     
         let myInit = {
           headers: {
@@ -35,7 +35,7 @@ exports.myProfilePage = async (req, res, next) => {
         let data = await fetch(urlStrava, myInitToken);
         data = await data.json();
 
-        const urlSaveInDb = 'http://localhost:3000/api/strava';
+        const urlSaveInDb = 'https://exonpproject.herokuapp.com/api/strava';
         const myInitTokenSave = {
           method: "POST",
           headers: {
@@ -56,7 +56,7 @@ exports.myProfilePage = async (req, res, next) => {
         await fetch(urlSaveInDb, myInitTokenSave);
       }
 /////////////////retrieve token from db///////////////////////
-        let urlGetStravaConnectionData = `http://localhost:3000/api/strava/${userId}`;
+        let urlGetStravaConnectionData = `https://exonpproject.herokuapp.com/api/strava/${userId}`;
 
         myInitStravaConnectionData = {
           headers: {
@@ -102,7 +102,7 @@ exports.myProfilePage = async (req, res, next) => {
             let updatedData = await fetch(urlStrava, myInitTokenRefresh);
             updatedData = await updatedData.json();
 
-            const urlSaveInDbUpdate = `http://localhost:3000/api/strava/${userId}`;
+            const urlSaveInDbUpdate = `https://exonpproject.herokuapp.com/api/strava/${userId}`;
             const myInitUpdatedTokenSave = {
                 method: "PUT",
                 headers: {
@@ -137,14 +137,14 @@ exports.myProfilePage = async (req, res, next) => {
       }
 };
 
-//http://www.strava.com/oauth/authorize?client_id=55086&response_type=code&redirect_uri=http://localhost:3000/myprofile&approval_prompt=force&scope=read
+//http://www.strava.com/oauth/authorize?client_id=55086&response_type=code&redirect_uri=https://exonpproject.herokuapp.com/myprofile&approval_prompt=force&scope=read
 
 exports.dcStrava = async (req, res, next) => {
   try {
       const token = req.cookies["token"];
       const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
       const userId = decodedToken.userId;
-      let url = `http://localhost:3000/api/user/${userId}`;
+      let url = `https://exonpproject.herokuapp.com/api/user/${userId}`;
   
       let myInit = {
         headers: {
@@ -156,7 +156,7 @@ exports.dcStrava = async (req, res, next) => {
       userInfo = await userInfo.json();
   
 /////////////////retrieve token from db///////////////////////
-      let urlGetStravaConnectionData = `http://localhost:3000/api/strava/${userId}`;
+      let urlGetStravaConnectionData = `https://exonpproject.herokuapp.com/api/strava/${userId}`;
 
       myInitStravaConnectionData = {
         headers: {
@@ -199,7 +199,7 @@ exports.editMyInfoPage = async (req, res, next) => {
       const token = req.cookies["token"];
       const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
       const userId = decodedToken.userId;
-      let url = `http://localhost:3000/api/user/${userId}`;
+      let url = `https://exonpproject.herokuapp.com/api/user/${userId}`;
 
       let myInit = {
         headers: {
@@ -220,7 +220,7 @@ exports.followingPage = async (req, res, next) => {
       const token = req.cookies["token"];
       const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
       const userId = decodedToken.userId;
-      let url = `http://localhost:3000/api/following/${userId}`;
+      let url = `https://exonpproject.herokuapp.com/api/following/${userId}`;
 
       let myInit = {
         headers: {

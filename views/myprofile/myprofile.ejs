@@ -42,7 +42,7 @@
     <% if(userInfoStrava.recent_ride_totals.count != 'none') { %>
       <a href="/dcstrava/" class="collection-item">Disconnect my Strava</a>
     <% } else{ %>
-      <a href="https://www.strava.com/oauth/authorize?client_id=55086&response_type=code&redirect_uri=http://localhost:3000/myprofile/&approval_prompt=force&scope=read" class="collection-item">Connect my Strava</a>
+      <a href="https://www.strava.com/oauth/authorize?client_id=55086&response_type=code&redirect_uri=https://exonpproject.herokuapp.com/myprofile/&approval_prompt=force&scope=read" class="collection-item">Connect my Strava</a>
     <% } %>
     
     <a href="/signout/" class="collection-item">Sign out</a>

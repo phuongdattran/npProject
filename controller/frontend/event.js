@@ -4,7 +4,7 @@ exports.eventPage = async (req, res, next) => {
   try {
     const token = req.cookies["token"];
 
-    let url = `http://localhost:3000/api/event`;
+    let url = `https://exonpproject.herokuapp.com/api/event`;
 
     if (req.query) {
       let urlStringFilter = "?";
@@ -12,7 +12,7 @@ exports.eventPage = async (req, res, next) => {
           urlStringFilter += `${property}=${req.query[property]}&`
       }
       urlStringFilter = urlStringFilter.slice(0, urlStringFilter.length-1)
-      url = `http://localhost:3000/api/event${urlStringFilter}`;
+      url = `https://exonpproject.herokuapp.com/api/event${urlStringFilter}`;
     }
 
     myInit = {
@@ -35,7 +35,7 @@ exports.newEventPage1 = async (req, res, next) => {
         const token = req.cookies["token"];
         const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
         const userId = decodedToken.userId;
-        let url = `http://localhost:3000/api/user/${userId}`;
+        let url = `https://exonpproject.herokuapp.com/api/user/${userId}`;
     
         myInit = {
           headers: {
@@ -73,7 +73,7 @@ exports.eventDetailPage = async (req, res, next) => {
     const token = req.cookies["token"];
     const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
     const userId = decodedToken.userId;
-    let url = `http://localhost:3000/api/event/${req.params.id}`;
+    let url = `https://exonpproject.herokuapp.com/api/event/${req.params.id}`;
 
     myInit = {
       headers: {
@@ -91,7 +91,7 @@ exports.eventDetailPage = async (req, res, next) => {
 
     eventDetail.author = `${eventDetail.authorInfo.firstname} ${eventDetail.authorInfo.lastname}`;
     
-    let userUrl = `http://localhost:3000/api/user/${userId}`;
+    let userUrl = `https://exonpproject.herokuapp.com/api/user/${userId}`;
     let userInfo = await fetch(userUrl, myInit);
     userInfo = await userInfo.json();
 
@@ -105,7 +105,7 @@ exports.eventDetailPage = async (req, res, next) => {
 
     await Promise.all(
       eventDetail.participants.map(async (element)=>{
-        let participantFetchUrl = `http://localhost:3000/api/user/${element.userId}`;
+        let participantFetchUrl = `https://exonpproject.herokuapp.com/api/user/${element.userId}`;
         let participantFetchInfo = await fetch(participantFetchUrl, myInit);
         participantFetchInfo = await participantFetchInfo.json();
         promises.push(participantFetchInfo)
@@ -131,7 +131,7 @@ exports.eventDetailPage = async (req, res, next) => {
 exports.eventEditPage1 = async (req, res, next) => {
   try {
     const token = req.cookies["token"];
-    let url = `http://localhost:3000/api/event/${req.params.id}`;
+    let url = `https://exonpproject.herokuapp.com/api/event/${req.params.id}`;
 
     myInit = {
       headers: {
@@ -156,7 +156,7 @@ exports.eventEditPage1 = async (req, res, next) => {
 exports.eventEditPage2 = async (req, res, next) => {
   try {
     const token = req.cookies["token"];
-    let url = `http://localhost:3000/api/event/${req.params.id}`;
+    let url = `https://exonpproject.herokuapp.com/api/event/${req.params.id}`;
 
     myInit = {
       headers: {
