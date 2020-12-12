@@ -48,7 +48,7 @@ Event collection schema
 
 ![Capture](https://user-images.githubusercontent.com/66431442/98675996-4b76b900-235b-11eb-9cca-cc6e0b8f631a.JPG)
 
-Participant collection scema
+Participant collection schema
 
 ![Capture](https://user-images.githubusercontent.com/66431442/98676234-9db7da00-235b-11eb-9d5f-97efeda4f600.JPG)
 
